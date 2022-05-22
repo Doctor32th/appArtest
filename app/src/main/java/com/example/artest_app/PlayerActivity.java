@@ -22,6 +22,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.gauravk.audiovisualizer.visualizer.BarVisualizer;
+import com.gauravk.audiovisualizer.visualizer.BlastVisualizer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class PlayerActivity extends AppCompatActivity {
     //Declaración de la barra de progreso de la canción
     SeekBar seekMusicBar;
 
-    //Declaración de la variable que definirá los efectos visuales en el reproductor
+    //Declaración de la variable. Definirá los efectos visuales en el reproductor
     BarVisualizer barVisualizer;
 
     //Declaración de la imageView (icono de la nota musical del reproductor)
@@ -104,7 +105,7 @@ public class PlayerActivity extends AppCompatActivity {
         seekMusicBar = findViewById(R.id.seekBar);
 
         //Inicialización del efecto visual sincronizándolo con su vista en el xml
-        //barVisualizer = findViewById(R.id.green_wave);
+        barVisualizer = findViewById(R.id.green_wave);
 
         //Inicialización del imageView sincronizándolo con su vista en el xml
         //Se trata de la imagen de la nota
@@ -269,10 +270,10 @@ public class PlayerActivity extends AppCompatActivity {
 
         //Estas tres líneas se encargan de mostrar el efecto visual en la parte inferior
         //del reproductor de música cuando esta sonando la canción
-        /*int audioSessionId = mediaPlayer.getAudioSessionId();
+        int audioSessionId = mediaPlayer.getAudioSessionId();
         if (audioSessionId != -1) {
             barVisualizer.setAudioSessionId(audioSessionId);
-        }*/
+        }
 
         /**
          * Método aplicado sobre el botón next.

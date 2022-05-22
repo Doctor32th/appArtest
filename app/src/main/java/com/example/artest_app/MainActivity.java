@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         /**
          * Estructura try/catch. Es muy importante para atrapar el error
-         * de tipo NullpointerException
+         * de tipo NullpointerException.
          */
         try {
 

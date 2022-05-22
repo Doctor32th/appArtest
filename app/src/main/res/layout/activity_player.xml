@@ -130,14 +130,15 @@
                 android:layout_toLeftOf="@id/btnPrevious"
                 android:background="@drawable/ic_rewind" />
 
-            <com.gauravk.audiovisualizer.visualizer.BlastVisualizer
+            <com.gauravk.audiovisualizer.visualizer.BarVisualizer
                 xmlns:custom="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/green_wave"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
-                custom:avColor="#B2FF59"
-                custom:avDensity="0.3"
+                custom:avColor="@color/white"
+                android:visibility="visible"
+                custom:avDensity="0.5"
                 custom:avSpeed="normal"
                 custom:avType="outline"
                 custom:avWidth="8dp" />
