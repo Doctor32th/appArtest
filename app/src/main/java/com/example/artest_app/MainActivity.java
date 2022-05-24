@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         /**
          * Estructura try/catch. Es muy importante para atrapar el error
-         * de tipo NullpointerException.
+         * de tipo NullpointerException
          */
         try {
 
@@ -102,12 +102,12 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-            } else {
+            }/*else {
                 //Este objeto de tipo Path obtendrá la ruta de los archivos en el móvil
                 Path path = Paths.get("/storage/emulated/0/Music");
                 File filePath = path.toFile();
                 arrayList.add(filePath); //Cada archivo de tipo File se añadirá al arreglo
-            }
+            }*/
 
         } catch (NullPointerException e) {
             System.out.println("Error:" + e + "" + e.getStackTrace()[0].getLineNumber());

@@ -176,8 +176,8 @@ public class PlayerActivity extends AppCompatActivity {
         //Comienzo de la actualización de la barra de progreso
         updateSeekBar.start();
         //Estas líneas dibujarán el movimiento de la seekBar con un color celeste
-        seekMusicBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.teal_200), PorterDuff.Mode.MULTIPLY);
-        seekMusicBar.getThumb().setColorFilter(getResources().getColor(R.color.teal_200), PorterDuff.Mode.SRC_IN);
+        seekMusicBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.MULTIPLY);
+        seekMusicBar.getThumb().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
 
         /**
          * setOnSeekBarChangeListener permitirá el libre movimiento de la seekBar para que
