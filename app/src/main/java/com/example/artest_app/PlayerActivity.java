@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.gauravk.audiovisualizer.visualizer.BarVisualizer;
 import com.gauravk.audiovisualizer.visualizer.BlastVisualizer;
+import com.gauravk.audiovisualizer.visualizer.CircleLineVisualizer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,10 +40,10 @@ public class PlayerActivity extends AppCompatActivity {
     SeekBar seekMusicBar;
 
     //Declaración de la variable. Definirá los efectos visuales en el reproductor
-    BarVisualizer barVisualizer;
+    CircleLineVisualizer circleLineVisualizer;
 
     //Declaración de la imageView (icono de la nota musical del reproductor)
-    ImageView imageView;
+    //ImageView imageView;
 
     //Declaración de la variable de tipo String songName
     String songName;
@@ -76,6 +77,14 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (circleLineVisualizer != null)
+            circleLineVisualizer.release();
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
@@ -105,11 +114,11 @@ public class PlayerActivity extends AppCompatActivity {
         seekMusicBar = findViewById(R.id.seekBar);
 
         //Inicialización del efecto visual sincronizándolo con su vista en el xml
-        barVisualizer = findViewById(R.id.green_wave);
+        circleLineVisualizer = findViewById(R.id.green_wave);
 
         //Inicialización del imageView sincronizándolo con su vista en el xml
         //Se trata de la imagen de la nota
-        imageView = findViewById(R.id.imgView);
+        //imageView = findViewById(R.id.imgView);
 
         //Estructura if en la cual si el mediaPlayer es diferente de null comenzará y podrá pausar
         if (mediaPlayer != null){
@@ -243,7 +252,7 @@ public class PlayerActivity extends AppCompatActivity {
                      * reproductor de música, el imageView (la imagen de la nota musical)
                      * generará una animación rotando en círculo
                      */
-                    TranslateAnimation moveAnim = new TranslateAnimation(-25, 25,-25, 25);
+                    /*TranslateAnimation moveAnim = new TranslateAnimation(-25, 25,-25, 25);
                     moveAnim.setInterpolator(new AccelerateInterpolator());
                     moveAnim.setDuration(600);
                     moveAnim.setFillEnabled(true);
@@ -252,7 +261,7 @@ public class PlayerActivity extends AppCompatActivity {
                     moveAnim.setRepeatCount(1);
 
                     //Aquí estamos transfiriendo la animación al imageView
-                    imageView.startAnimation(moveAnim);
+                    imageView.startAnimation(moveAnim);*/
 
                 }
             }
@@ -272,7 +281,7 @@ public class PlayerActivity extends AppCompatActivity {
         //del reproductor de música cuando esta sonando la canción
         int audioSessionId = mediaPlayer.getAudioSessionId();
         if (audioSessionId != -1) {
-            barVisualizer.setAudioSessionId(audioSessionId);
+            circleLineVisualizer.setAudioSessionId(audioSessionId);
         }
 
         /**
@@ -301,7 +310,11 @@ public class PlayerActivity extends AppCompatActivity {
                 txtSongName.setText(songName);
                 mediaPlayer.start();
 
-                startAnimation(imageView, 360f);
+                int audioSessionId = mediaPlayer.getAudioSessionId();
+                if (audioSessionId != -1) {
+                    circleLineVisualizer.setAudioSessionId(audioSessionId);
+                }
+                //startAnimation(imageView, 360f);
             }
         });
 
@@ -329,7 +342,11 @@ public class PlayerActivity extends AppCompatActivity {
                 txtSongName.setText(songName);
                 mediaPlayer.start();
 
-                startAnimation(imageView, -360f);
+                int audioSessionId = mediaPlayer.getAudioSessionId();
+                if (audioSessionId != -1) {
+                    circleLineVisualizer.setAudioSessionId(audioSessionId);
+                }
+                //startAnimation(imageView, -360f);
             }
         });
 
@@ -362,7 +379,7 @@ public class PlayerActivity extends AppCompatActivity {
      * @param view
      * @param degree
      */
-    public void startAnimation(View view, Float degree){
+    /*public void startAnimation(View view, Float degree){
         //Declaración e inicialización de un objeto de la clase ObjectAnimator
         //Determinará el grado de rotación que adoptará el imageView en grados usando float
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(imageView, "rotation", 0f, degree);
@@ -374,7 +391,7 @@ public class PlayerActivity extends AppCompatActivity {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(objectAnimator);
         animatorSet.start();
-    }
+    }*/
 
     /**
      * Está función nos dará el tiempo de la canción según dónde movamos la seekBar.
