@@ -35,7 +35,7 @@
             android:ellipsize="marquee"
             android:fontFamily="@font/balsamiq_sans"
             android:marqueeRepeatLimit="marquee_forever"
-            android:padding="5dp"
+            android:padding="8dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:text="Nombre de la canción"

@@ -41,7 +41,7 @@
             android:layout_alignParentBottom="true"
             android:visibility="visible"
             custom:avColor="@color/light_green_dark"
-            custom:avDensity="0.5"
+            custom:avDensity="0.7"
             custom:avSpeed="slow"
             custom:avType="fill"
             custom:avWidth="8dp" />

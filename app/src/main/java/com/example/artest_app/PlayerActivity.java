@@ -90,7 +90,7 @@ public class PlayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_player);
 
         //Colocación del nombre de la aplicación
-        getSupportActionBar().setTitle("Artest");
+        getSupportActionBar().setTitle("Artest Library");
         //Activación del botón para retroceder
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
