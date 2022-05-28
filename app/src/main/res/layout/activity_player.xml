@@ -22,14 +22,16 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:ellipsize="marquee"
+            android:fontFamily="@font/balsamiq_sans"
             android:marqueeRepeatLimit="marquee_forever"
             android:padding="10dp"
+            android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="Cargando......"
+            android:text="Loading..."
             android:textAlignment="center"
-            android:textColor="#5EBA5F"
+            android:textColor="@color/white"
             android:textSize="21dp"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <com.gauravk.audiovisualizer.visualizer.CircleLineVisualizer
             xmlns:custom="http://schemas.android.com/apk/res-auto"
@@ -39,9 +41,9 @@
             android:layout_alignParentBottom="true"
             android:visibility="visible"
             custom:avColor="@color/light_green_dark"
-            custom:avDensity="1.5"
-            custom:avSpeed="normal"
-            custom:avType="outline"
+            custom:avDensity="0.5"
+            custom:avSpeed="slow"
+            custom:avType="fill"
             custom:avWidth="8dp" />
 
 

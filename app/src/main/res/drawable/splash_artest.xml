@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/white"/>
+    <item android:drawable="@color/black"/>
     <item>
-        <bitmap android:src="@drawable/logo_artest_splash_def" android:gravity="center"/>
+        <bitmap android:src="@drawable/log_artest_def"
+            android:gravity="center"/>
     </item>
 </layer-list>
