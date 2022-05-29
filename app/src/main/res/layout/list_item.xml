@@ -38,7 +38,7 @@
             android:padding="8dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="Nombre de la canción"
+            android:text="@string/list_1"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
             android:textStyle="bold" />

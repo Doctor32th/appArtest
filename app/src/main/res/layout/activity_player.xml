@@ -27,7 +27,7 @@
             android:padding="10dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="Loading..."
+            android:text="@string/media_1"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="21dp"
@@ -83,7 +83,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toLeftOf="@+id/seekBar"
-                    android:text="0:32"
+                    android:text="@string/media_2"
                     android:textColor="#5EBA5F"
                     android:textSize="15dp" />
 
@@ -95,7 +95,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginRight="20dp"
                     android:layout_toRightOf="@+id/seekBar"
-                    android:text="3:26"
+                    android:text="@string/media_3"
                     android:textColor="#5EBA5F"
                     android:textSize="15dp" />
 

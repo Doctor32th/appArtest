@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".InfoActivity">
+
+
+    <ImageView
+        android:id="@+id/artest_log"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#000000"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@+id/name_view"
+        android:layout_marginTop="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.789"
+        app:srcCompat="@drawable/logo_artest_splash_def" />
+
+    <TextView
+        android:id="@+id/name_view"
+        android:layout_width="246dp"
+        android:layout_height="32dp"
+        android:fontFamily="@font/balsamiq_sans"
+        android:gravity="center"
+        android:text="@string/info_1"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artest_log"
+        app:layout_constraintBottom_toTopOf="@id/line_1_view"
+        tools:layout_editor_absoluteY="290dp" />
+
+    <TextView
+        android:id="@+id/line_1_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/balsamiq_sans"
+        android:gravity="center"
+        android:text="@string/info_2"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/line_3_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_view"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <TextView
+        android:id="@+id/line_3_view"
+        android:layout_width="319dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="240dp"
+        android:fontFamily="@font/balsamiq_sans"
+        android:gravity="center"
+        android:text="@string/info_4"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_1_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

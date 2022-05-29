@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Artest</string>
+    <string name="info_1">Artest App Version PRO</string>
+    <string name="info_2">Built on May 29 2022</string>
+    <string name="info_3">Java</string>
+    <string name="info_4">Developed by Luis Robbe Toichoa Sautoho</string>
+    <string name="media_1">Loading...</string>
+    <string name="media_2">0:32</string>
+    <string name="media_3">3:26</string>
+    <string name="list_1">Nombre de la canción</string>
+    <string name="search_1">search</string>
+    <string name="search_2">info</string>
 </resources>

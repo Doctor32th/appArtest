@@ -1,5 +1,6 @@
 package com.example.artest_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
@@ -24,8 +25,6 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,6 +44,9 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Colocación del icono de la aplicación
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.logo);
 
         //Identificación de la variable listView ya declarada con el xml del activity main
         listView = (ListView) findViewById(R.id.listView);
@@ -55,6 +57,14 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    /**
+     * Esta función muestra el buscador dentro de la biblioteca gracias a que sincroniza
+     * el acitivity_main.xml con el search.xml
+     * Se ha casteado el Searchview para poder coger ese menu, ya que se encuentra en un
+     * xml independiente de la biblioteca.
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -76,6 +86,23 @@ public class MainActivity extends AppCompatActivity{
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.info_option){
+            Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
+        return true;
+    }
+
+    /**
+     * Esta función hace el papel de buscador filtrando los archivos de audio
+     * creando un arrayList vacio e introduciendo los resultados en este
+     * @param newText
+     */
     public void filter(String newText) {
         List<File> filteredList = new ArrayList<>();
         customAdapter customAdapter = new customAdapter();
@@ -254,6 +281,12 @@ public class MainActivity extends AppCompatActivity{
             return view;
         }
 
+        /**
+         * Esta función filtra las canciones a traves del buscador
+         * Cuando lo usamos, se elimina la lista y se recogen los archivos
+         * de audio que contienen el/los caracter/es introducido/s
+         * @param filteredList
+         */
         public void filterList(List<File> filteredList){
             List<String> listSongs = Arrays.asList(items);
             /*for(String song : listSongs) {
