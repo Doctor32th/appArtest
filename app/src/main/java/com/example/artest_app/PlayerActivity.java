@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,8 +38,11 @@ public class PlayerActivity extends AppCompatActivity {
     //Declaración de los textos relativos a la canción, que marcarán su nombre, comienzo y fin
     TextView txtSongName, txtSongStart, txtSongEnd;
 
-    //Declaración de la barra de progreso de la canción
-    SeekBar seekMusicBar;
+    //Declaración de la barra de progreso de la canción y de la barra de volumen
+    SeekBar seekMusicBar, seekVolumeBar;
+
+    //Declaración del objeto AudioManager
+    AudioManager audioManager;
 
     //Declaración de la variable. Definirá los efectos visuales en el reproductor
     CircleLineVisualizer circleLineVisualizer;
@@ -112,6 +117,43 @@ public class PlayerActivity extends AppCompatActivity {
 
         //Inicialización de la barra de progreso sincronizándola con su vista en el xml
         seekMusicBar = findViewById(R.id.seekBar);
+
+        //Inicialización de la barra de volumen sincronizándola con su vista en el xml
+        seekVolumeBar = findViewById(R.id.volumeBar);
+
+        //Casteo del audioManager para obtener servicio de audio
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
+        //Obtención del volumen máximo
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+
+        //Obtención del volumen actual
+        int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+
+        //Sincronización de la variable que lleva la barra de volumen con el máximo volumen
+        seekVolumeBar.setMax(maxVolume);
+
+        //Obtención del progreso del volumen
+        seekVolumeBar.setProgress(curVolume);
+
+        seekVolumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                //La siguiente línea nos permite ver el valor numérico del volumen
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         //Inicialización del efecto visual sincronizándolo con su vista en el xml
         circleLineVisualizer = findViewById(R.id.green_wave);
@@ -239,12 +281,12 @@ public class PlayerActivity extends AppCompatActivity {
                 //Si la canción está sonando y la pausamos, aparecerá el botón play
                 //El botón play es la señal que nos permitirá reanudar la canción por donde iba
                 if(mediaPlayer.isPlaying()){
-                    btnPlay.setBackgroundResource(R.drawable.ic_play);
+                    btnPlay.setBackgroundResource(R.drawable.ic_play_2);
                     mediaPlayer.pause();
                 } else {
                     //Si la canción está en pausa y la reanudamos, aparecerá el botón pause
                     //El botón pause es la señal que nos permitirá pausar la canción cuando queramos
-                    btnPlay.setBackgroundResource(R.drawable.ic_pause);
+                    btnPlay.setBackgroundResource(R.drawable.ic_pause_3);
                     mediaPlayer.start();
 
                     /**

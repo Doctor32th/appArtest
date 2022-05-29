@@ -107,7 +107,7 @@
                 android:layout_height="70dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="80dp"
-                android:background="@drawable/ic_pause" />
+                android:background="@drawable/ic_pause_3" />
 
             <Button
                 android:id="@+id/btnNext"
@@ -142,6 +142,34 @@
                 android:layout_toLeftOf="@id/btnPrevious"
                 android:background="@drawable/ic_rewind" />
 
+            <SeekBar
+                android:id="@+id/volumeBar"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnPlay"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/light_green_light" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_volume_mute_2"
+                android:layout_toLeftOf="@+id/volumeBar"
+                android:layout_marginTop="175dp"
+                android:layout_marginRight="-20dp"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_volume_up"
+                android:layout_toRightOf="@+id/volumeBar"
+                android:layout_marginTop="175dp"
+                android:layout_marginLeft="-20dp"/>
 
 
 

@@ -1,11 +1,15 @@
 package com.example.artest_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,18 +27,24 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
+
 
     ListView listView; //Declaración de la variable de tipo ListView
     String[] items; //Declaración del array de tipo String con los items
     //Los items en este caso son los nombres de cada canción
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //Identificación de la variable listView ya declarada con el xml del activity main
         listView = (ListView) findViewById(R.id.listView);
@@ -42,7 +52,42 @@ public class MainActivity extends AppCompatActivity {
         //Llamando a este método en el onCreate la aplicación pedirá permisos al móvil
         //para acceder a las canciones
         runtimePermission();
+
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search, menu);
+        MenuItem menuItem = menu.findItem(R.id.search_option);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return true;
+            }
+        });
+        return true;
+    }
+
+    public void filter(String newText) {
+        List<File> filteredList = new ArrayList<>();
+        customAdapter customAdapter = new customAdapter();
+        ArrayList<File> arrayList = new ArrayList<>();
+        for (File item : arrayList){
+            if (item.getName().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        customAdapter.filterList(filteredList);
+    }
+
 
     /**
      * Estos métodos procedentes de la librería Dexter son los que regularán los permisos
@@ -141,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         customAdapter customAdapter = new customAdapter();
         listView.setAdapter(customAdapter);
 
+
         //El siguiente método hará que al hacer click sobre una canción nos lleve a otra activity
         /**
          * La función onItemClick nos permitirá acceder a la Player Activity (al reproductor de
@@ -206,6 +252,18 @@ public class MainActivity extends AppCompatActivity {
             txtSong.setSelected(true);
             txtSong.setText(items[position]);
             return view;
+        }
+
+        public void filterList(List<File> filteredList){
+            List<String> listSongs = Arrays.asList(items);
+            /*for(String song : listSongs) {
+                listSongs.remove(0);
+            }*/
+            for(File file : filteredList) {
+                listSongs.add(file.getName());
+            }
+            items = listSongs.toArray(new String[0]);
+            notifyDataSetChanged();
         }
     }
 
